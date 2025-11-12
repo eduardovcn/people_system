@@ -15,6 +15,5 @@ public class Application {
         } while (opcao != 0);
 
         input.close();
-        System.out.println("Saindo do programa. Até mais!");
     }
 }
