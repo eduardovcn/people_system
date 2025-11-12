@@ -44,9 +44,9 @@ public class Cliente extends Pessoa {
         this.profissao = profissao;
     }
 
-    public void cadastrarCliente(int codigo, String nome,LocalDate dataNascimento,Endereco endereco,Telefone tel, Profissao profissao, String email) {
-
-        this.codigo = codigo;
+    public void cadastrarCliente(String nome,LocalDate dataNascimento,Endereco endereco,Telefone tel, Profissao profissao, String email) {
+        this.codigo = SEQUENCE.incrementAndGet();
+        this.dataCadastro = LocalDate.now();
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
