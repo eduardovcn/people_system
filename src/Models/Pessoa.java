@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import extensions.Endereco;
 import extensions.Telefone;
@@ -20,6 +20,10 @@ public class Pessoa {
         this.tel = tel;
         this.email = email;
         this.endereco = endereco;
+
+    }
+
+    public Pessoa() {
 
     }
 

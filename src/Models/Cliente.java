@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import extensions.Endereco;
 import extensions.Profissao;
@@ -7,7 +7,7 @@ import extensions.Telefone;
 import java.time.LocalDate;
 
 public class Cliente extends Pessoa {
-    private String codigo;
+    private int codigo;
     private LocalDate dataCadastro;
     private Profissao profissao;
 
@@ -17,11 +17,14 @@ public class Cliente extends Pessoa {
 
     }
 
-    public String getCodigo() {
+    public Cliente() {
+    }
+
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -41,9 +44,16 @@ public class Cliente extends Pessoa {
         this.profissao = profissao;
     }
 
-    public void cadastrarCliente() {
+    public void cadastrarCliente(int codigo, String nome,LocalDate dataNascimento,Endereco endereco,Telefone tel, Profissao profissao, String email) {
 
-        Cliente cliente = new Cliente(codigo, nome, dataNascimento, endereco, tel, profissao, email);
+        this.codigo = codigo;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.endereco = endereco;
+        this.tel = tel;
+        this.profissao = profissao;
+        this.email = email;
+
 
     }
 }

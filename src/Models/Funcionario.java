@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import extensions.Cargo;
 import extensions.Endereco;
@@ -12,8 +12,10 @@ public class Funcionario extends Pessoa {
     private double salario;
     private LocalDate dataAdmissao;
 
-    public Funcionario(String nome, LocalDate dataAdmissao, Telefone tel, String email, Endereco endereco) {
-        super(nome, dataAdmissao, tel, email, endereco);
+
+    public Funcionario() {
+        super();
+
     }
 
     public int getMatricula() {
@@ -61,15 +63,31 @@ public class Funcionario extends Pessoa {
         return this.cargo;
     }
 
-    public void cadastrarFuncionario(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, LocalDate dataAdmissao, double salario, Cargo cargo, int matricula) {
+    public void cadastrarFuncionario(String nome, LocalDate dataNascimento, LocalDate dataAdmissao, Telefone tel, String email, Endereco endereco, double salario, Cargo cargo, int matricula) {
         this.nome = nome;
         this.tel = tel;
         this.email = email;
         this.endereco = endereco;
+        this.dataNascimento = dataNascimento;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
         this.cargo = cargo;
         this.matricula = matricula;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "matrícula=" + matricula +
+                ", cargo=" + cargo.getNomeCargo() +
+                ", salario=" + salario +
+                ", dataAdmissao=" + dataAdmissao +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", tel=" + tel.getNumero() +
+                ", email='" + email + '\'' +
+                ", endereco=" + endereco.getLogradouro() +
+                '}';
     }
 }
 
