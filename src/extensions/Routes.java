@@ -1,5 +1,6 @@
 package extensions;
 import models.Cliente;
+import models.Funcionario;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -88,18 +89,55 @@ public class Routes {
 
         Cliente cliente = new Cliente();
         cliente.cadastrarCliente(nome, dataNascimento, endereco, tel, profissao, email);
-
-
-
+        System.out.println("\nCliente cadastrado com sucesso!\n");
 
     }
 
     private void criarFuncionario() {
-        // Implementar lógica de leitura/validação para criar Funcionário
-        System.out.println("Cadastrar Funcionário");
+        System.out.println("Digite os dados do Funcionário:\n");
+        System.out.println("Nome:");
+        String nome = in.nextLine();
+
+        System.out.println("Data de Nascimento (AAAA-MM-DD):");
+        LocalDate dataNascimento = LocalDate.parse(in.nextLine());
+
+        System.out.println("Logradouro:");
+        String logradouro = in.nextLine();
+        System.out.println("Complemento:");
+        String complemento = in.nextLine();
+        System.out.println("Bairro:");
+        String bairro = in.nextLine();
+        System.out.println("Cidade:");
+        String cidade = in.nextLine();
+        System.out.println("Número:");
+        String numero = in.nextLine();
+        System.out.println("CEP:");
+        String cep = in.nextLine();
+        Endereco endereco = new Endereco(logradouro, complemento, bairro, cidade, numero, cep);
+
+        System.out.println("Telefone (DDI + DDD + Número):");
+        String ddi = in.nextLine();
+        String ddd = in.nextLine();
+        String numeroTel = in.nextLine();
+        Telefone tel = new Telefone(ddi, ddd, numeroTel);
+
+        System.out.println("Profissão:");
+        String cargoNome = in.nextLine();
+        Cargo cargo = new Cargo(cargoNome);
+
+        System.out.println("Email:");
+        String email = in.nextLine();
+
+        System.out.println("Salário:");
+        double salario = Double.parseDouble(in.nextLine());
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.cadastrarFuncionario(nome, dataNascimento, endereco, tel, cargo, email, salario);
+        System.out.println("\nFuncionário cadastrado com sucesso!\n");
     }
 
-    private void consultarCadastro() {
+
+        private void consultarCadastro() {
         // Implementar lógica de consulta
         System.out.println("Consultar Cadastro");
     }
