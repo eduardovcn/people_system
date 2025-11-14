@@ -1,4 +1,5 @@
 package extensions;
+import database.CriacaoDb;
 import models.Cliente;
 import models.Funcionario;
 
@@ -87,8 +88,8 @@ public class Routes {
         System.out.println("Email:");
         String email = in.nextLine();
 
-        Cliente cliente = new Cliente();
-        cliente.cadastrarCliente(nome, dataNascimento, endereco, tel, profissao, email);
+        Cliente cliente = new Cliente(nome, dataNascimento, tel, email, endereco, profissao);
+        CriacaoDb.adicionarCliente(cliente);
         System.out.println("\nCliente cadastrado com sucesso!\n");
 
     }
@@ -131,14 +132,26 @@ public class Routes {
         System.out.println("Salário:");
         double salario = Double.parseDouble(in.nextLine());
 
-        Funcionario funcionario = new Funcionario();
-        funcionario.cadastrarFuncionario(nome, dataNascimento, endereco, tel, cargo, email, salario);
+        Funcionario funcionario = new Funcionario(nome, dataNascimento, tel, email, endereco, cargo, salario);
+        CriacaoDb.adicionarFuncionario(funcionario);
         System.out.println("\nFuncionário cadastrado com sucesso!\n");
     }
 
-
         private void consultarCadastro() {
         // Implementar lógica de consulta
-        System.out.println("Consultar Cadastro");
+        System.out.println("Digete 1 para consultar Cliente ou 2 para Funcionario:");
+        int tipoConsulta = in.nextInt();
+        in.nextLine(); // consumir quebra de linha
+        if (tipoConsulta == 1) {
+            System.out.println("Digite o código do Cliente para consulta:");
+            int codigoCliente = in.nextInt();
+            in.nextLine(); // consumir quebra de linha
+
+
+        } else if (tipoConsulta == 2) {
+            System.out.println("Funcionalidade de consulta de Funcionário ainda não implementada.");
+        } else {
+            System.out.println("Erro: Opção inválida para consulta.");
+        }
     }
 }

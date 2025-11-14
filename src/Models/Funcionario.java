@@ -7,15 +7,19 @@ import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Funcionario extends Pessoa {
-    private static final AtomicInteger SEQUENCE = new AtomicInteger(0);
+    private static final AtomicInteger SEQUENCE = new AtomicInteger(5000);
     private int matricula;
     private Cargo cargo;
     private double salario;
     private LocalDate dataAdmissao;
 
 
-    public Funcionario() {
-
+    public Funcionario(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, Cargo cargo, double salario) {
+        super(nome, dataNascimento, tel, email, endereco);
+        this.matricula = SEQUENCE.incrementAndGet();
+        this.cargo = cargo;
+        this.salario = salario;
+        this.dataAdmissao = LocalDate.now();
     }
 
     public int getMatricula() {
@@ -73,6 +77,7 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
         this.cargo = cargo;
         this.matricula = SEQUENCE.incrementAndGet();
+        this.idade = getIdade();
     }
 
     @Override
@@ -87,7 +92,7 @@ public class Funcionario extends Pessoa {
                 "\nTelefone: " + tel +
                 "\nEndereço: " + endereco +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + obterIdade() + " anos";
+                "\nIdade: " + idade + " anos";
     }
 }
 

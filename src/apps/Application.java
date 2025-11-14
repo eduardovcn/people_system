@@ -2,9 +2,12 @@ package apps;
 
 import extensions.Routes;
 import java.util.Scanner;
+import database.*;
 
 public class Application {
     public static void main(String[] args) {
+        CriacaoDb.inicializarBanco();
+
         Scanner input = new Scanner(System.in);
         Routes routes = new Routes(input);
 

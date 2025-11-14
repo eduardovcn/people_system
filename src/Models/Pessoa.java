@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Pessoa {
     protected String nome;
     protected LocalDate dataNascimento;
+    protected int idade;
     protected Telefone tel;
     protected String email;
     protected Endereco endereco;
@@ -21,13 +22,14 @@ public class Pessoa {
         this.email = email;
         this.endereco = endereco;
 
+
     }
 
     public Pessoa() {
 
     }
 
-    public int obterIdade() {
+    public int getIdade() {
         return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 
@@ -47,8 +49,8 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public Telefone getTel() {
-        return tel;
+    public String getTel() {
+                return String.valueOf(tel);
     }
 
     public void setTel(Telefone tel) {

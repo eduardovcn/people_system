@@ -3,3 +3,5 @@
 /.idea/workspace.xml
 .idea
 /out
+banco.db
+sqlite-jdbc-3.51.0.0.jar

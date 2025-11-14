@@ -12,12 +12,16 @@ public class Cliente extends Pessoa {
     private LocalDate dataCadastro;
     private Profissao profissao;
 
+    public Cliente(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, Profissao profissao) {
+        super(nome, dataNascimento, tel, email, endereco);
+        this.dataCadastro = LocalDate.now();
+        this.idade = getIdade();
+        this.profissao = profissao;
 
-    public Cliente() {
     }
 
     public int getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -40,18 +44,6 @@ public class Cliente extends Pessoa {
         this.profissao = profissao;
     }
 
-    public void cadastrarCliente(String nome,LocalDate dataNascimento,Endereco endereco,Telefone tel, Profissao profissao, String email) {
-        this.codigo = SEQUENCE.incrementAndGet();
-        this.dataCadastro = LocalDate.now();
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.tel = tel;
-        this.profissao = profissao;
-        this.email = email;
-
-
-    }
 
     @Override
     public String toString() {
@@ -59,7 +51,7 @@ public class Cliente extends Pessoa {
                 "\nNome: " + nome +
                 "\nCódigo: " + codigo +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + obterIdade() +
+                "\nIdade: " + idade +
                 "\nEndereço: " + endereco +
                 "\nTelefone: " + tel +
                 "\nProfissão: " + profissao +
@@ -67,5 +59,7 @@ public class Cliente extends Pessoa {
                 "\nData de Cadastro: " + dataCadastro;
     }
 }
+
+
 
 
