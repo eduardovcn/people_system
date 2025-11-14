@@ -4,9 +4,10 @@ import extensions.Cargo;
 import extensions.Endereco;
 import extensions.Telefone;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Funcionario extends Pessoa {
-
+    private static final AtomicInteger SEQUENCE = new AtomicInteger(0);
     private int matricula;
     private Cargo cargo;
     private double salario;
@@ -14,7 +15,6 @@ public class Funcionario extends Pessoa {
 
 
     public Funcionario() {
-        super();
 
     }
 
@@ -63,31 +63,31 @@ public class Funcionario extends Pessoa {
         return this.cargo;
     }
 
-    public void cadastrarFuncionario(String nome, LocalDate dataNascimento, LocalDate dataAdmissao, Telefone tel, String email, Endereco endereco, double salario, Cargo cargo, int matricula) {
+    public void cadastrarFuncionario(String nome, LocalDate dataNascimento, Endereco endereco, Telefone tel, Cargo cargo, String email, double salario) {
         this.nome = nome;
         this.tel = tel;
         this.email = email;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
-        this.dataAdmissao = dataAdmissao;
+        this.dataAdmissao = LocalDate.now();
         this.salario = salario;
         this.cargo = cargo;
-        this.matricula = matricula;
+        this.matricula = SEQUENCE.incrementAndGet();
     }
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "matrícula=" + matricula +
-                ", cargo=" + cargo.getNomeCargo() +
-                ", salario=" + salario +
-                ", dataAdmissao=" + dataAdmissao +
-                ", nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", tel=" + tel.getNumero() +
-                ", email='" + email + '\'' +
-                ", endereco=" + endereco.getLogradouro() +
-                '}';
+        return "Funcionário" +
+                "\nNome: " + nome +
+                "\nMatrícula: " + matricula +
+                "\nCargo: " + cargo +
+                "\nSalário: " + salario +
+                "\nData de Admissão: " + dataAdmissao +
+                "\nEmail: " + email +
+                "\nTelefone: " + tel +
+                "\nEndereço: " + endereco +
+                "\nData de Nascimento: " + dataNascimento +
+                "\nIdade: " + obterIdade() + " anos";
     }
 }
 

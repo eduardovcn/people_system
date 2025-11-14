@@ -3,19 +3,15 @@ package models;
 import extensions.Endereco;
 import extensions.Profissao;
 import extensions.Telefone;
-
+import java.util.concurrent.atomic.AtomicInteger;
 import java.time.LocalDate;
 
 public class Cliente extends Pessoa {
+    private static final AtomicInteger SEQUENCE = new AtomicInteger(0);
     private int codigo;
     private LocalDate dataCadastro;
     private Profissao profissao;
 
-
-    public Cliente(String codigo, String nome, LocalDate dataCadastro, Endereco endereco, Telefone tel, Profissao profissao, String email) {
-        super(nome, dataCadastro, tel, email, endereco);
-
-    }
 
     public Cliente() {
     }
@@ -55,6 +51,20 @@ public class Cliente extends Pessoa {
         this.email = email;
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente" +
+                "\nNome: " + nome +
+                "\nCódigo: " + codigo +
+                "\nData de Nascimento: " + dataNascimento +
+                "\nIdade: " + obterIdade() +
+                "\nEndereço: " + endereco +
+                "\nTelefone: " + tel +
+                "\nProfissão: " + profissao +
+                "\nEmail: " + email +
+                "\nData de Cadastro: " + dataCadastro;
     }
 }
 
