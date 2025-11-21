@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CriacaoDb {
-
+    /// Cria as tabelas no banco de dados, caso não existam
     public static void inicializarBanco() {
 
         String sqlCreateTableCliente = "CREATE TABLE IF NOT EXISTS lista_clientes (" +

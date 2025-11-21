@@ -6,6 +6,7 @@ import database.*;
 
 public class Application {
     public static void main(String[] args) {
+        // Inicializa o banco de dados, caso não exista
         CriacaoDb.inicializarBanco();
 
         Scanner input = new Scanner(System.in);

@@ -30,7 +30,9 @@ public class Pessoa {
     }
 
     public int getIdade() {
-        return Period.between(dataNascimento, LocalDate.now()).getYears();
+        idade = Period.between(dataNascimento, LocalDate.now()).getYears();
+
+        return idade;
     }
 
     public String getNome() {

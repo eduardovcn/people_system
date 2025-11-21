@@ -15,7 +15,6 @@ public class Cliente extends Pessoa {
     public Cliente(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, Profissao profissao) {
         super(nome, dataNascimento, tel, email, endereco);
         this.dataCadastro = LocalDate.now();
-        this.idade = getIdade();
         this.profissao = profissao;
 
     }
@@ -51,7 +50,7 @@ public class Cliente extends Pessoa {
                 "\nNome: " + nome +
                 "\nCódigo: " + codigo +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + idade +
+                "\nIdade: " + getIdade() +
                 "\nEndereço: " + endereco +
                 "\nTelefone: " + tel +
                 "\nProfissão: " + profissao +

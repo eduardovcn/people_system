@@ -92,7 +92,7 @@ public class Funcionario extends Pessoa {
                 "\nTelefone: " + tel +
                 "\nEndereço: " + endereco +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + idade + " anos";
+                "\nIdade: " + getIdade() + " anos";
     }
 }
 
