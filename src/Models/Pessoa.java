@@ -1,7 +1,7 @@
-package models;
+package Models;
 
 import extensions.Endereco;
-import extensions.Telefone;
+import estruturas.ListaDeTelefonesNaoOrdenados;
 import java.time.Period;
 import java.time.LocalDate;
 
@@ -10,15 +10,15 @@ public class Pessoa {
     protected String nome;
     protected LocalDate dataNascimento;
     protected int idade;
-    protected Telefone tel;
+    protected ListaDeTelefonesNaoOrdenados telsContato;
     protected String email;
     protected Endereco endereco;
 
 
-    public Pessoa(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco) {
+    public Pessoa(String nome, LocalDate dataNascimento, ListaDeTelefonesNaoOrdenados telsContato, String email, Endereco endereco) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.tel = tel;
+        this.telsContato = telsContato;
         this.email = email;
         this.endereco = endereco;
 
@@ -51,14 +51,6 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getTel() {
-                return String.valueOf(tel);
-    }
-
-    public void setTel(Telefone tel) {
-        this.tel = tel;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -75,6 +67,11 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+    public ListaDeTelefonesNaoOrdenados getTelsContato() {
+        return telsContato;
+    }
 
-
+    public void setTelsContato(ListaDeTelefonesNaoOrdenados telsContato) {
+        this.telsContato = telsContato;
+    }
 }

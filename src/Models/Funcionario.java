@@ -1,5 +1,6 @@
-package models;
+package Models;
 
+import estruturas.ListaDeTelefonesNaoOrdenados;
 import extensions.Cargo;
 import extensions.Endereco;
 import extensions.Telefone;
@@ -14,8 +15,8 @@ public class Funcionario extends Pessoa {
     private LocalDate dataAdmissao;
 
 
-    public Funcionario(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, Cargo cargo, double salario) {
-        super(nome, dataNascimento, tel, email, endereco);
+    public Funcionario(String nome, LocalDate dataNascimento, ListaDeTelefonesNaoOrdenados telsContato, String email, Endereco endereco, Cargo cargo, double salario) {
+        super(nome, dataNascimento, telsContato, email, endereco);
         this.matricula = SEQUENCE.incrementAndGet();
         this.cargo = cargo;
         this.salario = salario;
@@ -69,7 +70,7 @@ public class Funcionario extends Pessoa {
 
     public void cadastrarFuncionario(String nome, LocalDate dataNascimento, Endereco endereco, Telefone tel, Cargo cargo, String email, double salario) {
         this.nome = nome;
-        this.tel = tel;
+        this.telsContato = getTelsContato();
         this.email = email;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
@@ -89,10 +90,10 @@ public class Funcionario extends Pessoa {
                 "\nSalário: " + salario +
                 "\nData de Admissão: " + dataAdmissao +
                 "\nEmail: " + email +
-                "\nTelefone: " + tel +
+                "\nTelefone: " + telsContato +
                 "\nEndereço: " + endereco +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + getIdade() + " anos";
+                "\nIdade: " + idade + " anos";
     }
 }
 

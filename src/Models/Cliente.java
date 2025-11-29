@@ -1,8 +1,8 @@
-package models;
+package Models;
 
+import estruturas.ListaDeTelefonesNaoOrdenados;
 import extensions.Endereco;
 import extensions.Profissao;
-import extensions.Telefone;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.time.LocalDate;
 
@@ -12,10 +12,12 @@ public class Cliente extends Pessoa {
     private LocalDate dataCadastro;
     private Profissao profissao;
 
-    public Cliente(String nome, LocalDate dataNascimento, Telefone tel, String email, Endereco endereco, Profissao profissao) {
-        super(nome, dataNascimento, tel, email, endereco);
+    public Cliente(String nome, LocalDate dataNascimento, ListaDeTelefonesNaoOrdenados telsContato, String email, Endereco endereco, Profissao profissao) {
+        super(nome, dataNascimento, telsContato, email, endereco);
         this.dataCadastro = LocalDate.now();
         this.profissao = profissao;
+        this.idade = getIdade();
+        this.codigo = SEQUENCE.incrementAndGet();
 
     }
 
@@ -50,9 +52,9 @@ public class Cliente extends Pessoa {
                 "\nNome: " + nome +
                 "\nCódigo: " + codigo +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + getIdade() +
+                "\nIdade: " + idade +
                 "\nEndereço: " + endereco +
-                "\nTelefone: " + tel +
+                "\nTelefone: " + telsContato +
                 "\nProfissão: " + profissao +
                 "\nEmail: " + email +
                 "\nData de Cadastro: " + dataCadastro;

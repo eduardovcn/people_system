@@ -1,7 +1,7 @@
 package database;
 
 
-import models.*;
+import Models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -63,7 +63,7 @@ public class CriacaoDb {
                 pstmt.setString(3, String.valueOf(cliente.getDataNascimento()));
                 pstmt.setInt(4, cliente.getIdade());
                 pstmt.setString(5, String.valueOf(cliente.getEndereco()));
-                pstmt.setString(6, cliente.getTel());
+                pstmt.setString(6, String.join(";", (CharSequence) cliente.getTelsContato()));
                 pstmt.setString(7, String.valueOf(cliente.getProfissao()));
                 pstmt.setString(8, cliente.getEmail());
                 pstmt.setString(9, String.valueOf(cliente.getDataCadastro()));
@@ -91,7 +91,7 @@ public class CriacaoDb {
                 pstmt.setString(3, String.valueOf(funcionario.getDataNascimento()));
                 pstmt.setInt(4, funcionario.getIdade());
                 pstmt.setString(5, String.valueOf(funcionario.getEndereco()));
-                pstmt.setString(6, funcionario.getTel());
+                pstmt.setString(6, String.join(";", (CharSequence) funcionario.getTelsContato()));
                 pstmt.setString(7, String.valueOf(funcionario.getCargo()));
                 pstmt.setString(8, funcionario.getEmail());
                 pstmt.setString(9, String.valueOf(funcionario.getDataAdmissao()));
