@@ -1,21 +1,24 @@
 package Models;
 
 import extensions.Endereco;
-import estruturas.ListaDeTelefonesNaoOrdenados;
+import extensions.Telefone;
+
 import java.time.Period;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Pessoa {
     protected String nome;
     protected LocalDate dataNascimento;
     protected int idade;
-    protected ListaDeTelefonesNaoOrdenados telsContato;
+    public static List<Telefone> telsContato = new ArrayList<>();
     protected String email;
     protected Endereco endereco;
 
 
-    public Pessoa(String nome, LocalDate dataNascimento, ListaDeTelefonesNaoOrdenados telsContato, String email, Endereco endereco) {
+    public Pessoa(String nome, LocalDate dataNascimento, List<Telefone> telsContato, String email, Endereco endereco) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.telsContato = telsContato;
@@ -67,11 +70,21 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public ListaDeTelefonesNaoOrdenados getTelsContato() {
+
+    //public ListaDeTelefonesNaoOrdenados getTelsContato() {
+    //    return telsContato;
+    //}
+
+    public List<Telefone> getTelsContato() {
         return telsContato;
     }
 
-    public void setTelsContato(ListaDeTelefonesNaoOrdenados telsContato) {
-        this.telsContato = telsContato;
+    //public void setTelsContato(ListaDeTelefonesNaoOrdenados telsContato) {
+    //    this.telsContato = telsContato;
+    //}
+
+    public void adicionarTelefone(Telefone telefone) {
+        this.telsContato.add(telefone);
     }
+
 }

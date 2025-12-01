@@ -1,10 +1,11 @@
 package Models;
 
-import estruturas.ListaDeTelefonesNaoOrdenados;
+
 import extensions.Cargo;
 import extensions.Endereco;
 import extensions.Telefone;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Funcionario extends Pessoa {
@@ -15,7 +16,7 @@ public class Funcionario extends Pessoa {
     private LocalDate dataAdmissao;
 
 
-    public Funcionario(String nome, LocalDate dataNascimento, ListaDeTelefonesNaoOrdenados telsContato, String email, Endereco endereco, Cargo cargo, double salario) {
+    public Funcionario(String nome, LocalDate dataNascimento, String email, Endereco endereco, Cargo cargo, double salario) {
         super(nome, dataNascimento, telsContato, email, endereco);
         this.matricula = SEQUENCE.incrementAndGet();
         this.cargo = cargo;

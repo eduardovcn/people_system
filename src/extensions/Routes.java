@@ -2,13 +2,14 @@ package extensions;
 import database.CriacaoDb;
 import Models.Cliente;
 import Models.Funcionario;
-import estruturas.ListaDeTelefonesNaoOrdenados;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
+
 public class Routes {
     private final Scanner in;
+    //private List<Telefone> telsContato;
 
     public Routes(Scanner in) {
         this.in = in;
@@ -76,18 +77,10 @@ public class Routes {
         String cep = in.nextLine();
         Endereco endereco = new Endereco(logradouro, complemento, bairro, cidade, numero, cep);
 
-        System.out.println("Quantos telefones deseja adicionar?");
-        int quantidadeTelefones = Integer.parseInt(in.nextLine());
-
         System.out.println("Telefone (DDD + Número):");
-        ListaDeTelefonesNaoOrdenados lista1 = new ListaDeTelefonesNaoOrdenados();
-        while (lista1.getCapacidadePadrao() <= quantidadeTelefones -1) {
-
-            String ddd = in.nextLine();
-            String numeroTel = in.nextLine();
-            Telefone tel = new Telefone(ddd, numeroTel);
-            lista1.adicionarTelefone(tel);
-        }
+        String ddd = in.nextLine();
+        String numeroTel = in.nextLine();
+        Telefone tel = new Telefone(ddd, numeroTel);
 
         System.out.println("Profissão:");
         String profissaoNome = in.nextLine();
@@ -96,8 +89,9 @@ public class Routes {
         System.out.println("Email:");
         String email = in.nextLine();
 
-        Cliente cliente = new Cliente(nome, dataNascimento, lista1, email, endereco, profissao);
-        cliente.setTelsContato(lista1);
+
+        Cliente cliente = new Cliente(nome, dataNascimento, email, endereco, profissao);
+        Cliente.telsContato.add(tel);
         CriacaoDb.adicionarCliente(cliente);
         System.out.println("\nCliente cadastrado com sucesso!\n");
 
@@ -125,18 +119,11 @@ public class Routes {
         String cep = in.nextLine();
         Endereco endereco = new Endereco(logradouro, complemento, bairro, cidade, numero, cep);
 
-        System.out.println("Quantos telefones deseja adicionar?");
-        int quantidadeTelefones = Integer.parseInt(in.nextLine());
-
         System.out.println("Telefone (DDD + Número):");
-        ListaDeTelefonesNaoOrdenados lista1 = new ListaDeTelefonesNaoOrdenados();
-        while (lista1.getCapacidadePadrao() <= quantidadeTelefones -1) {
 
-            String ddd = in.nextLine();
-            String numeroTel = in.nextLine();
-            Telefone tel = new Telefone(ddd, numeroTel);
-            lista1.adicionarTelefone(tel);
-        }
+        String ddd = in.nextLine();
+        String numeroTel = in.nextLine();
+        Telefone tel = new Telefone(ddd, numeroTel);
 
         System.out.println("Profissão:");
         String cargoNome = in.nextLine();
@@ -148,15 +135,15 @@ public class Routes {
         System.out.println("Salário:");
         double salario = Double.parseDouble(in.nextLine());
 
-        Funcionario funcionario = new Funcionario(nome, dataNascimento, lista1, email, endereco, cargo, salario);
-        funcionario.setTelsContato(lista1);
+        Funcionario funcionario = new Funcionario(nome, dataNascimento, email, endereco, cargo, salario);
+        Funcionario.telsContato.add(tel);
         CriacaoDb.adicionarFuncionario(funcionario);
         System.out.println("\nFuncionário cadastrado com sucesso!\n");
     }
 
         private void consultarCadastro() {
         // Implementar lógica de consulta
-        System.out.println("Digete 1 para consultar Cliente ou 2 para Funcionario:");
+        System.out.println("Digite 1 para consultar Cliente ou 2 para Funcionario:");
         int tipoConsulta = in.nextInt();
         in.nextLine(); // consumir quebra de linha
         if (tipoConsulta == 1) {
