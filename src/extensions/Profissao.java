@@ -14,4 +14,9 @@ public class Profissao {
     public void setNomeProfissao(String nomeCargo) {
         this.nomeProfissao = nomeCargo;
     }
+
+    @Override
+    public String toString() {
+        return nomeProfissao;
+    }
 }

@@ -5,12 +5,10 @@ import extensions.Cargo;
 import extensions.Endereco;
 import extensions.Telefone;
 
-
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;;
 
 public class Funcionario extends Pessoa {
-    private static final AtomicInteger SEQUENCE = new AtomicInteger(5000);
     private int matricula;
     private Cargo cargo;
     private double salario;
@@ -18,11 +16,11 @@ public class Funcionario extends Pessoa {
 
 
     public Funcionario(String nome, LocalDate dataNascimento, String email, Endereco endereco, Cargo cargo, double salario) {
-        super(nome, dataNascimento, telsContato, email, endereco);
-        this.matricula = SEQUENCE.incrementAndGet();
+        super(nome, dataNascimento,email, endereco);
         this.cargo = cargo;
         this.salario = salario;
         this.dataAdmissao = LocalDate.now();
+
     }
 
     public int getMatricula() {
@@ -72,30 +70,27 @@ public class Funcionario extends Pessoa {
 
     public void cadastrarFuncionario(String nome, LocalDate dataNascimento, Endereco endereco, Telefone tel, Cargo cargo, String email, double salario) {
         this.nome = nome;
-        this.telsContato = getTelsContato();
         this.email = email;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
-        this.dataAdmissao = LocalDate.now();
         this.salario = salario;
         this.cargo = cargo;
-        this.matricula = SEQUENCE.incrementAndGet();
-        this.idade = getIdade();
+
     }
 
     @Override
     public String toString() {
         return "Funcionário" +
                 "\nNome: " + nome +
-                "\nMatrícula: " + matricula +
+                "\nMatrícula: " + getMatricula() +
                 "\nCargo: " + cargo +
                 "\nSalário: " + salario +
                 "\nData de Admissão: " + dataAdmissao +
                 "\nEmail: " + email +
-                "\nTelefone: " + telsContato +
+                "\nTelefone: " + getTelefonesFormatados() +
                 "\nEndereço: " + endereco +
                 "\nData de Nascimento: " + dataNascimento +
-                "\nIdade: " + idade + " anos";
+                "\nIdade: " + getIdade() + " anos";
     }
 }
 

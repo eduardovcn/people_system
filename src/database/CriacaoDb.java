@@ -13,7 +13,7 @@ public class CriacaoDb {
     public static void inicializarBanco() {
 
         String sqlCreateTableCliente = "CREATE TABLE IF NOT EXISTS lista_clientes (" +
-                "    codigo INTEGER PRIMARY KEY," +
+                "    codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "    nome TEXT NOT NULL," +
                 "    dataNascimento TEXT," +
                 "    idade INTEGER," +
@@ -25,7 +25,7 @@ public class CriacaoDb {
                 ");";
 
         String sqlCreateTableFuncionarios = "CREATE TABLE IF NOT EXISTS lista_funcionarios (" +
-                "    matricula INTEGER PRIMARY KEY," +
+                "    matricula INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "    nome TEXT NOT NULL," +
                 "    dataNascimento TEXT," +
                 "    idade INTEGER," +
@@ -52,21 +52,20 @@ public class CriacaoDb {
 
     public static void adicionarCliente(models.Cliente cliente) {
 
-        String sqlInsertCliente = "INSERT INTO lista_clientes(codigo, nome, dataNascimento, idade, endereco, telefone, profissao, email, dataCadastro) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlInsertCliente = "INSERT INTO lista_clientes(nome, dataNascimento, idade, endereco, telefone, profissao, email, dataCadastro) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoDb.getConexao()) {
             assert conn != null;
             try (PreparedStatement pstmt = conn.prepareStatement(sqlInsertCliente)) {
 
-                pstmt.setInt(1, cliente.getCodigo());
-                pstmt.setString(2, cliente.getNome());
-                pstmt.setString(3, String.valueOf(cliente.getDataNascimento()));
-                pstmt.setInt(4, cliente.getIdade());
-                pstmt.setString(5, String.valueOf(cliente.getEndereco()));
-                pstmt.setString(6, String.join(";", (CharSequence) cliente.getTelsContato()));
-                pstmt.setString(7, String.valueOf(cliente.getProfissao()));
-                pstmt.setString(8, cliente.getEmail());
-                pstmt.setString(9, String.valueOf(cliente.getDataCadastro()));
+                pstmt.setString(1, cliente.getNome());
+                pstmt.setString(2, String.valueOf(cliente.getDataNascimento()));
+                pstmt.setInt(3, cliente.getIdade());
+                pstmt.setString(4, String.valueOf(cliente.getEndereco()));
+                pstmt.setString(5, cliente.getTelefonesFormatados());
+                pstmt.setString(6, String.valueOf(cliente.getProfissao()));
+                pstmt.setString(7, cliente.getEmail());
+                pstmt.setString(8, String.valueOf(cliente.getDataCadastro()));
 
                 pstmt.executeUpdate();
 
@@ -80,21 +79,20 @@ public class CriacaoDb {
 
     public static void adicionarFuncionario(models.Funcionario funcionario) {
 
-        String sqlInsertFuncionario = "INSERT INTO lista_funcionarios(matricula, nome, dataNascimento, idade, endereco, telefone, cargo, email, dataAdmissao) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlInsertFuncionario = "INSERT INTO lista_funcionarios(nome, dataNascimento, idade, endereco, telefone, cargo, email, dataAdmissao) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoDb.getConexao()) {
             assert conn != null;
             try (PreparedStatement pstmt = conn.prepareStatement(sqlInsertFuncionario)) {
 
-                pstmt.setInt(1, funcionario.getMatricula());
-                pstmt.setString(2, funcionario.getNome());
-                pstmt.setString(3, String.valueOf(funcionario.getDataNascimento()));
-                pstmt.setInt(4, funcionario.getIdade());
-                pstmt.setString(5, String.valueOf(funcionario.getEndereco()));
-                pstmt.setString(6, String.join(";", (CharSequence) funcionario.getTelsContato()));
-                pstmt.setString(7, String.valueOf(funcionario.getCargo()));
-                pstmt.setString(8, funcionario.getEmail());
-                pstmt.setString(9, String.valueOf(funcionario.getDataAdmissao()));
+                pstmt.setString(1, funcionario.getNome());
+                pstmt.setString(2, String.valueOf(funcionario.getDataNascimento()));
+                pstmt.setInt(3, funcionario.getIdade());
+                pstmt.setString(4, String.valueOf(funcionario.getEndereco()));
+                pstmt.setString(5, funcionario.getTelefonesFormatados());
+                pstmt.setString(6, String.valueOf(funcionario.getCargo()));
+                pstmt.setString(7, funcionario.getEmail());
+                pstmt.setString(8, String.valueOf(funcionario.getDataAdmissao()));
 
                 pstmt.executeUpdate();
 

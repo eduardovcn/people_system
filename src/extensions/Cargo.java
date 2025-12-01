@@ -14,4 +14,9 @@ public class Cargo {
     public void setNomeCargo(String nomeCargo) {
         this.nomeCargo = nomeCargo;
     }
+
+    @Override
+    public String toString() {
+        return nomeCargo;
+    }
 }

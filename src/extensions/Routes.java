@@ -76,8 +76,10 @@ public class Routes {
         String cep = in.nextLine();
         Endereco endereco = new Endereco(logradouro, complemento, bairro, cidade, numero, cep);
 
-        System.out.println("Telefone (DDD + Número):");
+        System.out.println("Telefone:\n");
+        System.out.println("DDD:");
         String ddd = in.nextLine();
+        System.out.println("Número:");
         String numeroTel = in.nextLine();
         Telefone tel = new Telefone(ddd, numeroTel);
 
@@ -90,7 +92,7 @@ public class Routes {
 
 
         Cliente cliente = new Cliente(nome, dataNascimento, email, endereco, profissao);
-        Cliente.telsContato.add(tel);
+        cliente.adicionarTelefone(tel);
         CriacaoDb.adicionarCliente(cliente);
         System.out.println("\nCliente cadastrado com sucesso!\n");
 
@@ -118,9 +120,10 @@ public class Routes {
         String cep = in.nextLine();
         Endereco endereco = new Endereco(logradouro, complemento, bairro, cidade, numero, cep);
 
-        System.out.println("Telefone (DDD + Número):");
-
+        System.out.println("Telefone:\n");
+        System.out.println("DDD:");
         String ddd = in.nextLine();
+        System.out.println("Número:");
         String numeroTel = in.nextLine();
         Telefone tel = new Telefone(ddd, numeroTel);
 
@@ -135,7 +138,7 @@ public class Routes {
         double salario = Double.parseDouble(in.nextLine());
 
         Funcionario funcionario = new Funcionario(nome, dataNascimento, email, endereco, cargo, salario);
-        Funcionario.telsContato.add(tel);
+        funcionario.adicionarTelefone(tel);
         CriacaoDb.adicionarFuncionario(funcionario);
         System.out.println("\nFuncionário cadastrado com sucesso!\n");
     }

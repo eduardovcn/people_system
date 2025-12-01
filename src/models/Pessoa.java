@@ -7,24 +7,23 @@ import java.time.Period;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Pessoa {
     protected String nome;
     protected LocalDate dataNascimento;
     protected int idade;
-    public static List<Telefone> telsContato = new ArrayList<>();
+    private List<Telefone> telsContato = new ArrayList<>();
     protected String email;
     protected Endereco endereco;
 
 
-    public Pessoa(String nome, LocalDate dataNascimento, List<Telefone> telsContato, String email, Endereco endereco) {
+    public Pessoa(String nome, LocalDate dataNascimento, String email, Endereco endereco) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.telsContato = telsContato;
         this.email = email;
         this.endereco = endereco;
-
 
     }
 
@@ -83,8 +82,18 @@ public class Pessoa {
     //    this.telsContato = telsContato;
     //}
 
+    public String getTelefonesFormatados() {
+        if (this.telsContato == null || this.telsContato.isEmpty()) {
+            return "";
+        }
+        return this.telsContato.stream()
+                .map(Telefone::toString)
+                .collect(Collectors.joining(";"));
+    }
+
     public void adicionarTelefone(Telefone telefone) {
         this.telsContato.add(telefone);
     }
+
 
 }
