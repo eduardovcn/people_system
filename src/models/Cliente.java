@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import extensions.Endereco;
 import extensions.Profissao;

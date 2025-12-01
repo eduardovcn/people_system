@@ -1,7 +1,7 @@
 package database;
 
 
-import Models.*;
+import models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,7 +50,7 @@ public class CriacaoDb {
         }
     }
 
-    public static void adicionarCliente(Cliente cliente) {
+    public static void adicionarCliente(models.Cliente cliente) {
 
         String sqlInsertCliente = "INSERT INTO lista_clientes(codigo, nome, dataNascimento, idade, endereco, telefone, profissao, email, dataCadastro) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -78,7 +78,7 @@ public class CriacaoDb {
 
     }
 
-    public static void adicionarFuncionario(Funcionario funcionario) {
+    public static void adicionarFuncionario(models.Funcionario funcionario) {
 
         String sqlInsertFuncionario = "INSERT INTO lista_funcionarios(matricula, nome, dataNascimento, idade, endereco, telefone, cargo, email, dataAdmissao) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

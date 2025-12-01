@@ -1,12 +1,13 @@
-package Models;
+package models;
 
 
 import extensions.Cargo;
 import extensions.Endereco;
 import extensions.Telefone;
+
+
 import java.time.LocalDate;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicInteger;;
 
 public class Funcionario extends Pessoa {
     private static final AtomicInteger SEQUENCE = new AtomicInteger(5000);

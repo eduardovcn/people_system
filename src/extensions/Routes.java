@@ -1,7 +1,6 @@
 package extensions;
 import database.CriacaoDb;
-import Models.Cliente;
-import Models.Funcionario;
+import models.*;
 
 import java.time.LocalDate;
 import java.util.Scanner;
