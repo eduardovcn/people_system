@@ -145,17 +145,21 @@ public class Routes {
 
         private void consultarCadastro() {
         // Implementar lógica de consulta
-        System.out.println("Digite 1 para consultar Cliente ou 2 para Funcionario:");
+        System.out.println("Digite 1 para consultar Cliente ou 2 para Funcionario: ");
         int tipoConsulta = in.nextInt();
         in.nextLine(); // consumir quebra de linha
         if (tipoConsulta == 1) {
-            System.out.println("Digite o código do Cliente para consulta:");
+            System.out.println("Digite o código do Cliente que deseja consultar: ");
             int codigoCliente = in.nextInt();
+            CriacaoDb.consultarCadastroCliente(codigoCliente);
             in.nextLine(); // consumir quebra de linha
 
 
         } else if (tipoConsulta == 2) {
-            System.out.println("Funcionalidade de consulta de Funcionário ainda não implementada.");
+            System.out.println("Digite o código do Funcionário que deseja consultar: ");
+            int codigoFuncionario = in.nextInt();
+            CriacaoDb.consultarCadastroFuncionario(codigoFuncionario);
+            in.nextLine(); // consumir quebra de linha
         } else {
             System.out.println("Erro: Opção inválida para consulta.");
         }

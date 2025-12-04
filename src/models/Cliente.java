@@ -2,9 +2,8 @@ package models;
 
 import extensions.Endereco;
 import extensions.Profissao;
-
-import java.util.concurrent.atomic.AtomicInteger;
 import java.time.LocalDate;
+
 
 public class Cliente extends Pessoa {
     private int codigo;

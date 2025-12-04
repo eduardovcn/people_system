@@ -70,9 +70,7 @@ public class Pessoa {
     }
 
 
-    //public ListaDeTelefonesNaoOrdenados getTelsContato() {
-    //    return telsContato;
-    //}
+
 
     public List<Telefone> getTelsContato() {
         return telsContato;
